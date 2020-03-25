@@ -41,7 +41,7 @@ def uploaded_file(filename):
 
 @app.route('/display/<filename>')
 def display(filename):
-    return render_template("display.html", image_name=filename)
+    return render_template("display.html", org_img=filename, prc_img=filename)
                                
 if __name__ == '__main__':
     app.run()
