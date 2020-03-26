@@ -43,5 +43,13 @@ In brief, following are the steps that I followed.
 5. The same functon finds the distance between the coordinates and closest edge.  
 6. The closest edge distance is displayed on the screen to the user.  
 
->When we will be using Tensorflow.js, the edge detection part won't be done by server.  
+>When we will be using Tensorflow.js, the edge detection part won't be done by server. 
+
+## Edge detection
+An edge may be defined as a set of connected pixels that forms a boundary between two disjoints regions.
+Edge detection is basically, a method of segmenting an image into regions of discontinuity.  
+
+There are many edge detection algorithms. i have implemented them from scratch here [mgautam98/Digital-Image-Processor/filters](https://github.com/mgautam98/Digital-Image-Processor/blob/master/src/filters.py). For this project I have used opencv python library to do the same.  
+
+### Canny Edge detection  
 
