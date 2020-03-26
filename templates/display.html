@@ -75,7 +75,8 @@
     $("#edge_detected_img").on("click", function (event) {
         var x = event.offsetX;
         var y = event.offsetY;
-        $("#clicked_coordinates").html("You clicked on " + "<br/>X Coordinate : " + x + " Y Coordinate : " + y);
+        $("#clicked_coordinates").html("You clicked on " + "<br/>X Coordinate : " + x + " Y Coordinate : " + y +
+          "<br><br> Closest edge Coordinates:<br> {{url_for('closest_edge', filename=prc_img)}}" );
     });
 });
 </script>

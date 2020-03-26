@@ -3,6 +3,9 @@ import os
 import numpy as np
 
 
+def get_closest_edge(filename, X, Y):
+    return (X,Y)
+
 def canny_edge_detect(filename):
 
     folder='uploads'

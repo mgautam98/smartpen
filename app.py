@@ -39,6 +39,9 @@ def uploaded_file(filename):
     print(filename)
     return send_from_directory("uploads", filename)
 
+@app.route('/coordinates/<filename>')
+def closest_edge(filename):
+    return (255,255)
 
 @app.route('/display/<filename>')
 def display(filename):
