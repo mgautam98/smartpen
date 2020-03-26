@@ -1,81 +1,80 @@
 <!doctype html>
 
 <head>
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock %}</title>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
 
-    <!-- meta -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <!-- /meta -->
+	<!-- meta -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- /meta -->
 
-    <!-- styles -->
-    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
-    <!-- /styles -->
+	<!-- styles -->
+	<link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+	<!-- /styles -->
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">SmartPen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">SmartPen</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/mgautam98/shopcut">Source Code</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- navbar finish -->
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://github.com/mgautam98/shopcut">Source Code</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!-- navbar finish -->
 
-    <div class="container" style="margin-top: 6%;">
-        <div class="col">
-            <div class="row" style="margin:15px">
-                <h2 >Click on the edge detected image to find the closest edge.</h2>
-                <h2 id="clicked_coordinates"></h2>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <figure class="figure">
-                        <img src=" {{url_for('uploaded_file', filename=org_img)}}" class="figure-img img-fluid rounded"
+	<div class="container" style="margin-top: 6%;">
+		<div class="col">
+			<div class="row" style="margin:15px">
+				<h2>Click on the edge detected image to find the closest edge.</h2>
+				<h2 id="clicked_coordinates"></h2>
+			</div>
+			<div class="row">
+				<div class="col">
+					<figure class="figure">
+						<img src=" {{url_for('uploaded_file', filename=org_img)}}" class="figure-img img-fluid rounded"
                             alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">Original Image {{org_img}} </figcaption>
-                    </figure>
-                </div>
-                <div class="col">
-                    <figure class="figure">
-                        <img id="edge_detected_img" src=" {{url_for('uploaded_file', filename=prc_img)}}"
+						<figcaption class="figure-caption">Original Image {{org_img}} </figcaption>
+					</figure>
+				</div>
+				<div class="col">
+					<figure class="figure">
+						<img id="edge_detected_img" src=" {{url_for('uploaded_file', filename=prc_img)}}"
                             class="figure-img img-fluid rounded"
                             alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">Canny edge detected image {{prc_img}} </figcaption>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
+						<figcaption class="figure-caption">Canny edge detected image {{prc_img}} </figcaption>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 
 </html>
 
 <script>
-    $(document).ready(function () {
+	$(document).ready(function () {
     $("#edge_detected_img").on("click", function (event) {
         var x = Math.abs(event.offsetX - this.width);
         var y = event.offsetY;
-        console.log(this.width, this.height);
         var dist = find_dist({{ data|safe }}, x, y)
         $("#clicked_coordinates").html("You clicked on " + "<br/>X Coordinate : " + x + " Y Coordinate : " + y +
           "<br><br> Closest edge distance:<br>" + dist);
