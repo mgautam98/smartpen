@@ -52,4 +52,12 @@ Edge detection is basically, a method of segmenting an image into regions of dis
 There are many edge detection algorithms. i have implemented them from scratch here [mgautam98/Digital-Image-Processor/filters](https://github.com/mgautam98/Digital-Image-Processor/blob/master/src/filters.py). For this project I have used opencv python library to do the same.  
 
 ### Canny Edge detection  
-
+Canny Edge Detection is a popular edge detection algorithm.It is a four stage algorithm, where it performs following tasks  
+* Noise Reduction
+> To remoe noise we apply 5x5 Gaussian filter
+* Finding Intensity Gradient of the Image
+>  here, we apply sobel filter in both horizontal and vertical direction the enhance the edges.
+* Non-maximum Suppression and
+>There are still some unwanted noise so w remove is using non-max suppression algorithm.
+* Hysteresis Thresholding
+> Here, we dicide which points are edge and which are not.
