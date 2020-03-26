@@ -52,18 +52,18 @@
                 <figure class="figure">
                     <img src=" {{url_for('uploaded_file', filename=org_img)}}" class="figure-img img-fluid rounded"
                         alt="A generic square placeholder image with rounded corners in a figure.">
-                    <figcaption class="figure-caption">Original Image</figcaption>
+                    <figcaption class="figure-caption">Original Image {{org_img}} </figcaption>
                 </figure>
             </div>
             <div class="col">
                 <figure class="figure">
                     <img src=" {{url_for('uploaded_file', filename=prc_img)}}" class="figure-img img-fluid rounded"
                         alt="A generic square placeholder image with rounded corners in a figure.">
-                    <figcaption class="figure-caption">Canny edge detected image</figcaption>
+                    <figcaption class="figure-caption">Canny edge detected image {{prc_img}} </figcaption>
                 </figure>
             </div>
         </div>
-        
+        <a href="{{url_for('display', filename=prc_img)}}">PROCESS</a>
     </div>
 
 </body>

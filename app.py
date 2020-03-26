@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
+import edge_detect
 
 app = Flask(__name__)
 
@@ -30,18 +31,20 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            print(filename)
             return redirect(url_for('display', filename=filename))
     return render_template('home.html')
 
 @app.route('/upload/<filename>')
 def uploaded_file(filename):
+    print(filename)
     return send_from_directory("uploads", filename)
 
 
 @app.route('/display/<filename>')
 def display(filename):
-    return render_template("display.html", org_img=filename, prc_img=filename)
+    # processed_imgname = edge_detect.canny_edge_detect(filename)
+    return render_template("display.html", org_img=filename, prc_img=processed_imgname)
+
                                
 if __name__ == '__main__':
     app.run()
