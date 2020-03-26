@@ -75,8 +75,14 @@
     $("#edge_detected_img").on("click", function (event) {
         var x = event.offsetX;
         var y = event.offsetY;
+        var dist = find_dist({{ data|safe }}, x, y)
         $("#clicked_coordinates").html("You clicked on " + "<br/>X Coordinate : " + x + " Y Coordinate : " + y +
-          "<br><br> Closest edge Coordinates:<br> {{url_for('closest_edge', filename=prc_img)}}" );
+          "<br><br> Closest edge distance:<br>" + dist);
     });
+
+    function find_dist(data, x, y){
+        return 50
+    }
+
 });
 </script>

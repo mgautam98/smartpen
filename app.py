@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 import edge_detect
@@ -45,8 +46,8 @@ def closest_edge(filename):
 
 @app.route('/display/<filename>')
 def display(filename):
-    processed_imgname = edge_detect.canny_edge_detect(filename)
-    return render_template("display.html", org_img=filename, prc_img=processed_imgname)
+    [processed_imgname, data] = edge_detect.canny_edge_detect(filename)
+    return render_template("display.html", org_img=filename, prc_img=processed_imgname, data = json.dumps(data))
 
                                
 if __name__ == '__main__':
