@@ -75,13 +75,15 @@
     $("#edge_detected_img").on("click", function (event) {
         var x = Math.abs(event.offsetX - this.width);
         var y = event.offsetY;
-        var dist = find_dist({{ data|safe }}, x, y)
+        var dist = find_dist({{ data|safe }}, x/this.width, y/this.height)
         $("#clicked_coordinates").html("You clicked on " + "<br/>X Coordinate : " + x + " Y Coordinate : " + y +
           "<br><br> Closest edge distance:<br>" + dist);
     });
 
     function find_dist(data, x, y){
         var min = Number.MAX_SAFE_INTEGER
+        x = x*data[0,0][0];
+        y = y*data[0,0][1];
         data.forEach((point) => {
             min = Math.min(Math.sqrt((point[0] - x)**2 + (point[1]-y)**2), min);
         })

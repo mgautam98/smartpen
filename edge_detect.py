@@ -4,9 +4,6 @@ import numpy as np
 
 edges = []
 
-def get_closest_edge(filename, X, Y):
-    return (X,Y)
-
 def canny_edge_detect(filename):
 
     folder='uploads'
@@ -16,7 +13,13 @@ def canny_edge_detect(filename):
     filename =  "edges" + filename
     cv2.imwrite(os.path.join(folder,filename),canny)
 
+    #clearing the previously calculated edges
     edges.clear()
+
+    # Append the shape of the image at [0,0]
+    edges.append([canny.shape[0],canny.shape[1]]) 
+
+    # Append edge points to edges
     for ix in range(canny.shape[0]):
         for iy in range(canny.shape[1]):
             if canny[ix][iy]>128:
