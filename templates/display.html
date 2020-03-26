@@ -81,7 +81,11 @@
     });
 
     function find_dist(data, x, y){
-        return 50
+        var min = 1080
+        data.forEach((point) => {
+            min = Math.min(Math.sqrt((point[0] - x)**2 + (point[1]-y)**2), min);
+        })
+        return min;
     }
 
 });
