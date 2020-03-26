@@ -47,25 +47,43 @@
     <!-- navbar finish -->
 
     <div class="container" style="margin-top: 6%;">
-        <div class="row">
-            <div class="col">
-                <figure class="figure">
-                    <img src=" {{url_for('uploaded_file', filename=org_img)}}" class="figure-img img-fluid rounded"
-                        alt="A generic square placeholder image with rounded corners in a figure.">
-                    <figcaption class="figure-caption">Original Image {{org_img}} </figcaption>
-                </figure>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <figure class="figure">
+                        <img src=" {{url_for('uploaded_file', filename=org_img)}}" class="figure-img img-fluid rounded"
+                            alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption">Original Image {{org_img}} </figcaption>
+                    </figure>
+                </div>
+                <div class="col">
+                    <figure class="figure">
+                        <img id="edge_detected_img" src=" {{url_for('uploaded_file', filename=prc_img)}}"
+                            class="figure-img img-fluid rounded"
+                            alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption">Canny edge detected image {{prc_img}} </figcaption>
+                    </figure>
+                </div>
             </div>
-            <div class="col">
-                <figure class="figure">
-                    <img src=" {{url_for('uploaded_file', filename=prc_img)}}" class="figure-img img-fluid rounded"
-                        alt="A generic square placeholder image with rounded corners in a figure.">
-                    <figcaption class="figure-caption">Canny edge detected image {{prc_img}} </figcaption>
-                </figure>
+            <div class="row">
+                <h2 style="margin:15px">Fine the closest edge from a point</h2>
             </div>
         </div>
-        <a href="{{url_for('display', filename=prc_img)}}">PROCESS</a>
     </div>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function () {
+    $("#edge_detected_img").on("click", function (event) {
+        var x = event.pageX - this.offsetLeft;
+        var y = event.pageY - this.offsetTop;
+        console.log(event.target)
+        alert("X Coordinate: " + x + " Y Coordinate: " + y);
+    });
+});
+</script>

@@ -42,9 +42,9 @@ def uploaded_file(filename):
 
 @app.route('/display/<filename>')
 def display(filename):
-    # processed_imgname = edge_detect.canny_edge_detect(filename)
+    processed_imgname = edge_detect.canny_edge_detect(filename)
     return render_template("display.html", org_img=filename, prc_img=processed_imgname)
 
                                
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',port='8080')
