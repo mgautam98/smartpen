@@ -73,9 +73,9 @@
 <script>
 	$(document).ready(function () {
     $("#edge_detected_img").on("click", function (event) {
-        var x = Math.abs(event.offsetX - this.width);
+        var x = event.offsetX;
         var y = event.offsetY;
-        var dist = find_dist({{ data|safe }}, x/this.width, y/this.height)
+        var dist = find_dist({{ data|safe }}, y/this.height, x/this.width)
         $("#clicked_coordinates").html("You clicked on " + "<br/>X Coordinate : " + x + " Y Coordinate : " + y +
           "<br><br> Closest edge distance:<br>" + dist);
     });
