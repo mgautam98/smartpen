@@ -61,3 +61,12 @@ Canny Edge Detection is a popular edge detection algorithm.It is a four stage al
 >There are still some unwanted noise so w remove is using non-max suppression algorithm.
 * Hysteresis Thresholding
 > Here, we dicide which points are edge and which are not.
+
+### Finding Distance from closest edge
+The server returns a object of edges which is changed into JSON data (At server) for client to further process it.
+> Initially, I was thinking to apply and graph based alorithm to find the closest edge. Eg. BFS, A*, Dijkstra etc. 
+> But, I made an observation that we are returning very small proportion of data back in comparision to the image size. So, we can simply go through all the edges and find the closest one.
+> So, I simply went through all the pts to get the distance.
+
+
+#### Thank You for reading. 
