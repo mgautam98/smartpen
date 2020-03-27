@@ -66,7 +66,7 @@ This achieved the following result
 
 ### Finding Distance from closest edge
 The server returns a object of edges which is changed into JSON data (At server) for client to further process it.
-> Initially, I was thinking to apply and graph based alorithm to find the closest edge. Eg. BFS, A*, Dijkstra etc. 
+> Initially, I was thinking to apply and graph based alorithm to find the closest edge using graph based algorithm.
 > But, I made an observation that we are returning very small proportion of data back in comparision to the image size. So, we can simply go through all the edges and find the closest one.
 > So, I simply went through all the pts to get the distance.
 
