@@ -67,9 +67,13 @@ This achieved the following result
 
 ### Finding Distance from closest edge
 The server returns a object of edges which is changed into JSON data (At server) for client to further process it.
-> Initially, I was thinking to apply and graph based alorithm to find the closest edge using graph based algorithm.
-> But, I made an observation that we are returning very small proportion of data back in comparision to the image size. So, we can simply go through all the edges and find the closest one.
-> So, I simply went through all the pts to get the distance.
+> Points to consider :
+  - We don't have to do a lot of computation as the detected edges are small portion of area as compared to non-edges. 
+    Say, out of 4000 pts only 100 are edge points.
+> Initially, I was thinking to apply and graph based alorithm to find the closest edge using neighbourhood graph based algorithm and data structures such as K-D tree or a VP-tree.
+> But, I made an observation that we are returning very small proportion of data back in comparision to the image size. So, we can simply go through all the edges and find the closest one (Brute Force).
+> Technically, at max only the half of the points could be edge points. If they are more they amalgamate to form new edge which has less edge points then the sum of the two. And it is only possible in highly noisy image. 
+> So, Burute force is a good candidate for this particular problem.
 
 
 #### Thank You for reading. 
